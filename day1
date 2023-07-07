@@ -1,0 +1,128 @@
+Difference between HTTP1.1 vs HTTP2
+HTTP is a protocol for transferring data between web servers and clients. It has been the standard for communication on the World Wide Web since its invention in 1989. However, over the years, the web has evolved and become more complex, requiring faster and more efficient ways of delivering content to users. That’s why a new version of HTTP, called HTTP2, was introduced in 2015, offering several improvements over the previous version, HTTP1.1.
+
+In this blog post, we will explore the main differences between HTTP1.1 and HTTP2, focusing on how they affect web performance and user experience.
+
+HTTP1.1
+HTTP1.1 was created in 1997 and has been widely used for more than two decades. It is a text-based protocol that uses a request-response model, where a client sends a request to a server and waits for a response. The request and response messages consist of a start line, headers, and an optional body.
+
+For example, when you visit a website at the domain www.example.com, your browser sends an HTTP request like this:
+
+GET /index.html HTTP/1.1
+Host: www.example.com
+Copy
+This request uses the GET method, which asks for data from the host server specified after Host:. In response to this request, the example.com web server returns an HTML page to your browser, along with any images, stylesheets, or other resources referenced in the HTML.
+
+However, not all of the resources are returned to your browser in the first call for data. The requests and responses go back and forth between the server and your browser until it has received all the resources necessary to render the web page on your screen.
+
+This process has some drawbacks that affect web performance, such as:
+
+Text-based encoding: HTTP1.1 transfers all the requests and responses in plain text format, which can be inefficient and prone to errors.
+Head-of-line blocking: HTTP1.1 loads resources one after the other, so if one resource cannot be loaded, it blocks all the other resources behind it. This can cause network delay and slow down page loading.
+Redundant headers: HTTP1.1 sends the same information related to headers in every request, which can increase bandwidth usage and overhead.
+Limited concurrency: HTTP1.1 can only handle one request per TCP connection at a time, which can limit the number of parallel requests that can be made to a server.
+To overcome some of these limitations, web developers have adopted various techniques such as:
+
+Resource inlining: Embedding small resources such as images or stylesheets directly into the HTML document to reduce the number of requests.
+Domain sharding: Splitting resources across multiple domains or subdomains to increase the number of concurrent connections.
+Concatenation: Combining multiple resources such as scripts or stylesheets into one file to reduce the number of requests.
+Compression: Reducing the size of resources by using algorithms such as gzip or brotli to speed up data transfer.
+However, these techniques also have some drawbacks such as:
+
+Increased complexity: Resource inlining, domain sharding, and concatenation require additional configuration and maintenance on both the server and client sides.
+Reduced cacheability: Resource inlining and concatenation can reduce the cacheability of resources by making them depend on each other.
+Wasted bandwidth: Domain sharding and compression can waste bandwidth by sending unnecessary or redundant data to clients.
+HTTP2
+HTTP2 was developed based on the SPDY protocol created by Google. It is a binary protocol that uses a multiplexed stream model, where multiple requests and responses can be sent over a single TCP connection in parallel. The requests and responses are divided into smaller units called frames, which are encoded in binary format.
+
+For example, when you visit a website that supports HTTP2 at the domain www.example.com, your browser sends an HTTP request like this:
+
+:method: GET
+:path: /index.html
+:scheme: https
+:authority: www.example.com
+Copy
+This request uses pseudo-headers that start with : to indicate metadata about the request. In response to this request, the example.com web server returns an HTML page to your browser, along with any images, stylesheets, or other resources referenced in the HTML.
+
+However, unlike HTTP1.1, HTTP2 can send multiple resources over a single TCP connection without blocking each other. This process has some advantages that improve web performance, such as:
+
+Binary encoding: HTTP2 transfers all the requests and responses in binary format, which can be more efficient and less error-prone.
+Multiplexing: HTTP2 can handle multiple requests and responses over a single TCP connection without head-of-line blocking. This can reduce network delay and improve page loading speed.
+Header compression: HTTP2 uses HPACK, a compression algorithm that reduces the size of headers and eliminates redundant data. This can save bandwidth and overhead.
+Server push: HTTP2 allows the server to send additional resources to the client without waiting for a request, using a PUSH frame. This can improve web performance and user experience by anticipating the client’s needs.
+HTTP2 is compatible with HTTP1.1 semantics, such as methods, headers, and status codes, so web applications can still function normally with the new protocol. However, some of the techniques that were used to optimize HTTP1.1 performance may not be necessary or even harmful for HTTP2 performance, such as:
+
+Resource inlining: Embedding small resources into the HTML document can increase the size of the document and reduce the cacheability of resources. HTTP2 can handle multiple requests efficiently, so resource inlining may not be needed.
+Domain sharding: Splitting resources across multiple domains or subdomains can increase the number of TCP connections and DNS lookups, which can add latency and overhead. HTTP2 can handle multiple resources over a single connection, so domain sharding may not be beneficial.
+Concatenation: Combining multiple resources into one file can reduce the cacheability of resources and increase the size of the file. HTTP2 can handle multiple requests efficiently, so concatenation may not be required.
+Compression: Reducing the size of resources by using algorithms such as gzip or brotli can still be useful for HTTP2, but it may not be as effective as for HTTP1.1, since HTTP2 already compresses headers and multiplexes streams.
+Conclusion
+HTTP2 is a major improvement over HTTP1.1, offering several features that enhance web performance and user experience. It is faster and more reliable than HTTP1.1 because it uses binary encoding, multiplexing, header compression, and server push. It is also compatible with HTTP1.1 semantics, so web applications can still work with the new protocol.
+
+However, HTTP2 also requires some changes in web development practices, as some of the techniques that were used to optimize HTTP1.1 performance may not be optimal or even detrimental for HTTP2 performance. Web developers should be aware of the differences between HTTP1.1 and HTTP2, and adopt the best practices for each protocol.
+
+Write a blog about objects and its internal representation in Javascript
+
+Objects are the representation of real-world entities in any language representing things by defining its properties along with their values. In Javascript, objects may be defined as an unordered collection of related data, of primitive or reference types, in the form of “key: value” pairs.
+
+Ways to create an object in javascript are as follows-
+Object literal
+object literal is a comma-separated list of name-value pairs wrapped in curly braces. Object literals encapsulate data, enclosing it in a tidy package.
+
+var car={id:1 , name:’abc’ , display:function() }
+
+As evident from the above example property values can be of any data type, including array literals, functions, nested object literals, or primitive data type.
+
+Object.create()
+The method creates a new object, using an existing object as the prototype of the newly created object.
+
+using the object literal example as prototype-
+
+var car2 = Object.create(car);
+
+car.id=2;
+
+car.name=’xyz’;
+
+Object constructor
+Useful when we require to create multiple objects of similar type. In this case, a constructor (kind of blueprint) is created and multiple objects can be initialized using the new keyword using the constructor as a wrapper for the newly created objects.
+
+construction function-
+
+function Person(name, age, eye) {
+this.Name = name;
+this.age = age;
+this.eyeColor = eye;
+}
+
+creating objects using constructor-
+
+var p1= new Person(“John”, 50, “blue”);
+var p2= new Person(“Sally”, 48, “green”);
+
+Object.assign()
+It is used to copy the values and properties from one or more source objects to a target object. It invokes getters and setters since it uses both [[Get]] on the source and [[Set]] on the target.
+
+Here is an example where properties from three source objects are getting assigned to a new object using Object.assign()
+
+Input : var obj1 = { a: 10 };
+var obj2 = { b: 20 };
+var obj3 = { c: 30 };
+var new_obj = Object.assign(o1, o2, o3);
+console.log(new_obj);
+Output : Object { a: 10, b: 20, c: 30 }
+
+Object.fromEntries
+This method transforms a list of key-value pairs into an object.
+
+const entries = new car([
+[‘id’, 4],
+[‘color’, ‘blue’]
+]);
+
+const car1= Object.fromEntries(entries);
+
+console.log(car1);
+output: Object { id: 4, color: ‘blue’}
+
+Unlike other object-oriented programming languages, javascript doesn’t have classes instead of that javascript is a prototype-based language allowing all the functionalities as in other class-based programming languages like JavaScript allows you to create hierarchies of objects and to have the inheritance of properties and their values and all this is done mainly using the constructor functions.
