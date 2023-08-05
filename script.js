@@ -1,29 +1,44 @@
-const json1 = '{"name":"person1","age":5}';
+console.log("Let's start the timer!!!");
 
-const json2 = '{"name":"peerson1","age":5}';
+setTimeout(function () {
+  console.log("10");
 
+  setTimeout(() => {
+    console.log("9");
 
-function compareJSON(json1, json2) {
-  
-  const obj1 = JSON.parse(json1);
-  const obj2 = JSON.parse(json2);
-  
-  
-  if(Object.keys(obj1).length != Object.keys(obj2).length) {
-    return false;
-  }
-  
- 
-  for(let key in obj1) {
-    if(!obj2.hasOwnProperty(key) || obj1[key] !== obj2[key]) {
-      return false;
-    }
-  }
-  
-  
-  return true;
-  
-}
+    setTimeout(() => {
+      console.log("8");
 
-const result = compareJSON(json1, json2);
-console.log(result);
+      setTimeout(()=>{
+        console.log("7");
+
+        setTimeout(()=>{
+            console.log("6");
+
+            setTimeout(()=>{
+                console.log("5");
+
+                setTimeout(()=>{
+                    console.log("4");
+
+                    setTimeout(()=>{
+                        console.log("3");
+
+                        setTimeout(()=>{
+                            console.log("2");
+
+                            setTimeout(()=>{
+                                console.log("1");
+
+                                console.log("Happy Newyear");
+
+                            },1000);
+                        },2000);
+                    },3000);
+                },4000);
+            },5000);
+        },6000);
+      },7000);  
+    }, 8000);
+  }, 9000);
+}, 10000);
