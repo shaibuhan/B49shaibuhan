@@ -1,6 +1,6 @@
 console.log("Let's start the timer!!!");
 
-setTimeout(function () {
+setTimeout(function() {
   console.log("10");
 
   setTimeout(() => {
