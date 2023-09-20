@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    div{
+        border:1px solid black;
+        margin:auto;
+        background-color: aqua;
+    }
+    
+
+
+
+    </style>
+</head>
+<body>
+    <div id="shaif">yasar</div>
+<script>
+const ele=document.createElement("div")
+ele.setAttribute("id","mainDIv");
+ele.setAttribute("class","main");
+ele.innerText="how are you";
+//const shaifEle=document.getElementById("shaif")
+//shaifele.appendChild(ele);
+
+const para=document.createElement("p")
+para.innerHTML=`<span style="color:red">good</span>`
+//shaifele.appendChild(para);
+
+const ach=document.createElement("a")
+ach.setAttribute("target","");
+ach.setAttribute("href","");
+ach.innerText="iam here";
+//shaifele.appendChild(ach);
+
+const shaifele=document.getElementById("shaif");
+shaifele.append(ele,para," test ",ach);
+
+  
+
+
+
+
+</script>
+
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+// topic-for each json
+
+var arr = [
+  {
+  "id": "1",
+  "msg": "hi",
+  "tid": "2013-05-05 23:35",
+  "fromWho": "hello1@email.se"
+  }, {
+  "id": "2",
+  "msg": "there",
+  "tid": "2013-05-05 23:45",
+  "fromWho": "hello2@email.se"
+  }
+];
+arr.forEach(function(item){
+  console.log('ID: ' + item.id);
+  console.log('MSG: ' + item.msg);
+  console.log('TID: ' + item.tid);
+  console.log('FROMWHO: ' + item.fromWho);
+});
+
+-------------------------------------------------------------------------------------------
+//for json
+
+var json = {
+    "persons": [
+        {"name": "Lili", "age": 23, "is_student": true},
+        {"name": "James", "age": 24, "is_student": true},
+        {"name": "John", "age": 25, "is_student": false}
+    ]
+};
+
+for (var key in json.persons) {
+    for (var keyName in json.persons[key]) {
+        alert(keyName + ': ' + (json.persons[key])[keyName]);
+    }
+}
+
+
+---------------------------------------------------------------------------------------------
+
